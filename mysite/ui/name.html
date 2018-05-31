@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Choose the random name</title>
+		<style type="text/css">
+			body{
+				font-size: 20px;
+				background-color: #130917;
+				color: yellow;
+				margin: 50px;
+			}
+			.button{
+				background-color: #4CAF50;
+			    border: none;
+			    color: white;
+			    padding: 15px 32px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 16px;
+			    margin: 4px 2px;
+			    cursor: pointer;
+			}
+			table,th,td{
+				border-collapse: collapse;
+				border: 1px solid white;
+			}
+			h1{
+				text-align: center;
+				color: #ff80aa;  
+				font-family: cursive;
+			}
+			h2{
+				text-align: center;
+				color: #29e2e7;  
+				font-size: 20px;
+				font-family: cursive;
+			}
+			th{
+				padding: 20px;
+			}
+			td{
+			 	padding-left: 90px;
+			 	padding-right: 70px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h2>Hello Team, Today is {{today}}.<br/> {{name}}!!</h2>
+		<h1>Please click the select button to choose the random name</h1>
+		<table align="center">
+			<tr>
+				<th>Sl.No</th>
+				<th>Name</th>
+			</tr>
+			<tr><td>1</td><td> Prabu</td></tr>
+			<tr><td>2</td><td> Prince Soloman</td></tr>
+			<tr><td>3</td><td> Deena</td></tr>
+			<tr><td>4</td><td> Manjula</td></tr>
+			<tr><td>5</td><td> Nancy</td></tr>
+			<tr><td>6</td><td> Veena</td></tr>
+			<tr><td>7</td><td> Ragav</td></tr>
+			<tr><td>8</td><td> Umesh</td></tr>
+			<tr><td>9</td><td> Prasanth</td></tr>
+			<tr><td>10</td><td> Parth</td></tr>
+			<tr><td>11</td><td> Gaurav</td></tr>
+			<tr><td>12</td><td> Ajay </td></tr>
+			<tr><td>13</td><td> Thirumoorthi</td></tr>
+			<tr><td>14</td><td> Sreejith</td></tr>
+			<tr><td>15</td><td> Raja Sengol</td></tr>
+			<tr><td>16</td><td> Vipin</td></tr>
+			<tr><td>17</td><td> Pratima</td></tr>
+			<tr><td>18</td><td> Kalai</td></tr>
+			<tr><td>19</td><td> Basavaraju</td></tr>
+			<tr><td>20</td><td> Tejas</td></tr>
+			<tr><td>21</td><td> Vijaya</td></tr>
+			<tr><td>22</td><td> Vinayak</td></tr>
+			<tr><td>23</td><td> Kaladhara</td></tr>
+			<tr><td>24</td><td> Shreeram</td></tr>
+			<tr><td>25</td><td> Thivya</td></tr>
+			<tr><td>26</td><td> Nisith</td></tr>
+			<tr><td>27</td><td> Raja Baskar</td></tr>
+			<tr><td>28</td><td> Gomathy</td></tr>
+			<tr><td>29</td><td> Shri Sankari</td></tr>
+
+
+			<tr>
+				<td colspan="2" align="center" style="padding: 15px">
+					<form>
+						<input type="button" value="Select" onclick="randomname();">
+					</form>
+				</td>
+			</tr>
+			<tr><td id="row" colspan="2" align="center" style="font-size: 30px"></td></tr>
+		</table>
+
+		<script type="text/javascript">
+			var myShows = ['Thivya', 'Nancy', 'Prince Soloman', 'Veena' , 'Manjula' , 'Deena', 'Ragav', 'Umesh', 'Prasanth', 'Parth', 'Gaurav', 'Ajay', 'Thirumoorthi', 'Sreejith' , 'Raja Sengol', 'Vipin', 'Pratima', 'Kalai', 'Tejas', 'Vijaya', 'Vinayak', 'Kaladhara','Shreeram', 'Prabu', 'Basavaraju', 'Nisith', 'Raja Baskar', 'Gomathy', 'Shri Sankari'];
+			function randomname(){
+				var i = Math.floor(Math.random()*myShows.length);
+				var show = myShows[i];
+				if(!show){
+					show = ("You selected all the Names. Please refresh the page");
+				}
+				document.getElementById('row').innerHTML = show;
+			   	myShows.splice(i,1);
+			}
+		</script>
+	</body>
+</html>

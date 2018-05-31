@@ -7,16 +7,24 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
+from django.views import generic
 
 from .models import Question, Choice
 
-def detail(request, question_id):
-   question = get_object_or_404(Question, pk=question_id)
-   return render(request, 'polls/detail.html', {'question': question})
+class IndexView(generic.ListView):
+  template_name = 'polls/thiv.html'
+  context_object_name = 'latest_question_list'
 
-def results(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/results.html', {'question': question})
+  def get_queryset(self):
+    return Question.objects.order_by('-pub_date')[:5]
+
+class DetailView(generic.DetailView):
+    model = Question
+    template_name = 'polls/detail.html'
+
+class ResultsView(generic.DetailView):
+    model = Question
+    template_name = 'polls/results.html'
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -36,11 +44,3 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
-def index(request):
-   latest_question_list = Question.objects.order_by('-pub_date')[:5]
-   # output= ', '.join([q.question_text for q in latest_question_list])
-   print latest_question_list
-   context = {
-        'latest_question_list': latest_question_list,
-   }
-   return HttpResponse(render(request,'polls/thiv.html',context))
